@@ -1,0 +1,15 @@
+# This file is managed by Puppet, changes may be overwritten
+
+# An "In-Memory Queue" is created for remote logging.
+$WorkDirectory /var/spool/rsyslog    # where to place spool files
+$ActionQueueFileName queue      # unique name prefix for spool files
+$ActionQueueMaxDiskSpace 1g     # spool space limit (use as much as possible)
+$ActionQueueSaveOnShutdown on   # save messages to disk on shutdown
+$ActionQueueType LinkedList     # run asynchronously
+$ActionResumeRetryCount -1      # infinety retries if host is down
+
+#Using default format for default logging format:
+$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+
+# Sending logs that match <%= @pattern %> to <%= @server %> via UDP on <%= @port %> using the default format.
+<%= @pattern %> @<%= @server %>:<%= @port %>

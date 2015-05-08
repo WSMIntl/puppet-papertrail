@@ -1,0 +1,8 @@
+files:<% @log_files.each do |log| %>
+  - <%= log %><% end %>
+destination:
+  host: <%= @server %>
+  port: <%= @port %>
+  protocol: tls
+exclude_patterns:<% @exclude_patterns.each do |pattern| %>
+  - <%= pattern %><% end %>
